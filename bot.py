@@ -31,12 +31,12 @@ async def send_student_result(update: Update, student_id: str):
         return
     
     row = student.iloc[0]
-    msg = f"📊 Result for {row['Name']} (Grade {row['Grade']}, {row['Division']})\n\n"
-    
+        msg = f"📊 Result for {row['Name']} (Grade {row['Grade']})\n\n"
+
     # All subjects to consider
     subjects = ["English","Math","Amharic","Kembatissa","IT","Physics","Chemistry","Biology",
                 "History","Citizenship","Geography","Economics","HPE","Social_Studies",
-                "Art","CTE","General_Science","Agriculture"]
+                "Art","CTE","General_Science","Agriculture","Avrage"]
     
     has_subject = False
     for sub in subjects:
@@ -60,10 +60,10 @@ async def send_student_result(update: Update, student_id: str):
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "👋 Welcome to *Saint Anthony Results Bot*!\n\n"
-        "➡️ Send your *student ID number* to check your results.\n"
-        "➡️ Admins can upload new results with `/upload password` and attach CSV.",
+        "➡️ Send your *student ID number* to check your results.",
         parse_mode="Markdown"
     )
+
 
 async def upload(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if len(context.args) == 0:
